@@ -1,0 +1,55 @@
+<div class="card-container" fxLayout="row wrap" fxLayoutAlign="center center"  *ngFor="let item of allPost">
+    <div fxFlex="70%" fxFlex.sm="100%" fxFlex.xs="100%" fxLayoutAlign="center">
+       
+    <mat-card >
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image">  </div>
+            <mat-card-title>
+                {{item.name}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                posted by : || {{item.postedBy}}| Posted on : {{item.date|date:'medium'}}
+            </mat-card-subtitle>
+        </mat-card-header >
+        <div fxFlex="70%" fxFlex.sm="100%" fxFlex.xs="100%" fxLayout="row" fxLayout.xs="column">
+            <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <img mat-card-image [src]="item.image" class="post-img border rounded-2xl" alt="">
+            </div>
+                 <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%" fxLayoutAlign="center center">
+                    <mat-card-content>
+                        {{item.contant.length> 500 ?item.contant.substr(0,400)+'....':item.contant}}
+                    </mat-card-content>
+
+                </div>
+        </div>
+        <hr>
+        <mat-card-actions>
+            <button mat-raised-button color="primary"  >{{item.likeCount}} <mat-icon>favorite</mat-icon> </button>
+            <button mat-raised-button color="primary" style="margin-left: 5px;">{{item.viewCount}} <mat-icon>remove_red_eye</mat-icon> </button>
+            <button mat-raised-button color="primary"  style="margin-left: 5px;" routerLink="/view-post/{{item.id}}">view Post </button>
+            
+            
+        </mat-card-actions>
+    
+    </mat-card>
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- 
+<mat-grid-list cols="5" fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%" fxLayout="row">
+    <mat-grid-tile fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%" >
+        <img mat-card-image [src]="item.image" class="post-img" alt="">
+         </mat-grid-tile>
+         <mat-grid-tile fxFlex="70%" fxFlex.sm="100%" fxFlex.xs="100%"   [colspan]="3" [rowspan]="1">
+            <mat-card-content>
+                {{item.contant.length> 500 ?item.contant.substr(0,400)+'....':item.contant}}
+            </mat-card-content>
+
+         </mat-grid-tile>
+</mat-grid-list> -->

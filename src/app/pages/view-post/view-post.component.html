@@ -1,0 +1,71 @@
+<div *ngIf="postData" fxLayout="row wrap" fxLayoutAlign="center center" class="card-container ">
+    <div fxFlex="70%" fxFlex.sm="100%" fxFlex.xs="100%" fxLayoutAlign="center" fxLayout="column">
+    <mat-card class="border rounded-2xl">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image">  </div>
+       
+                <mat-card-title> {{postData.name}}  </mat-card-title>
+                    <mat-card-subtitle>
+                        poster by : {{postData.postedBy}} | posted on : {{postData.date | date:'medium'}} 
+                    </mat-card-subtitle>
+
+                </mat-card-header>
+                
+                        <img mat-card-image [src]="postData.image" class="img h-[200px] sm:h-[300px] xs:h-[200px] xl-h[300px] border rounded-2xl" alt="card image">
+                        <mat-card-content>
+                            {{postData.contant}}
+                        </mat-card-content>
+                       
+                        <br>
+                        <mat-chip-set >
+                        <mat-chip *ngFor="let tag of postData.tags">{{tag}}</mat-chip>
+                    </mat-chip-set>
+
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" (click)="likePost()"> {{postData.likeCount}} <mat-icon>favorite</mat-icon></button>
+                            <button mat-raised-button color="primary" style="margin-left: 5px;"> {{postData.viewCount}} <mat-icon>remove_red_eye</mat-icon></button>
+
+                        </mat-card-actions>
+                  
+
+
+               
+          
+    </mat-card>
+
+    <mat-card class="comment-card">
+        <mat-card-content>
+            <h4>publish your comment</h4>
+            <div>
+                <form [formGroup]="commentform">
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Content</mat-label>
+                        <textarea matInput formControlName="contant"></textarea>
+
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>posted By</mat-label>
+                        <input matInput formControlName="postedBy">
+
+                    </mat-form-field>
+                    <button mat-raised-button (click)="publishComment()" color="primary" style="float: right;" [disabled]="! commentform">publish Comment</button>
+
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div style="margin-top: 10px;">
+        <h4>comments</h4>
+        <mat-card style="margin-top: 30px;" *ngFor="let comments of comments">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-img"></div>
+                <mat-card-title>{{comments.postedBy}}</mat-card-title>
+                <mat-card-subtitle>{{comments.createdAt|date:'medium'}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>{{comments.contant}}</mat-card-content>
+        </mat-card>
+    </div>
+</div>
+</div>

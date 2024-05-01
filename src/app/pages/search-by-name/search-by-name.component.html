@@ -1,0 +1,53 @@
+<div class="search-form">
+    
+    <mat-form-field appearance="outline" class="search-input">
+        <mat-label>enter keyword to search</mat-label>
+        <input matInput [(ngModel)]="name" name="" id="">
+
+        <button mat-button matSuffix color="primary" (click)="searchByname()"><mat-icon>search</mat-icon> </button>
+    </mat-form-field>
+</div>
+<div class="empty" *ngIf="result.length==0">
+    <mat-icon>no_sim</mat-icon>
+    <br>
+    <span>Nothing to see here ...</span>
+</div>
+
+
+<div  *ngFor="let item of result" fxLayout="row wrap" fxLayoutAlign="center center" class="card-container">
+    <div fxFlex="70%" fxFlex.sm="100%" fxFlex.xs="100%" fxLayoutAlign="center" fxLayout="column">
+
+
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avater class="example-header-img"></div>
+            <mat-card-title>
+                {{item.name}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                posted by : || {{item.postedBy}}| Posted on : {{item.date|date:'medium'}}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-grid-list cols="5">
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+                <img mat-card-image [src]="item.image" class="post-img" alt="">
+                 </mat-grid-tile>
+                 <mat-grid-tile  [colspan]="3" [rowspan]="1">
+                    <mat-card-content>
+                        {{item.contant.length> 500 ?item.contant.substr(0,400)+'....':item.contant}}
+                    </mat-card-content>
+
+                 </mat-grid-tile>
+        </mat-grid-list>
+        <hr>
+        <mat-card-actions>
+            <button mat-raised-button color="primary"  >{{item.likeCount}} <mat-icon>favorite</mat-icon> </button>
+            <button mat-raised-button color="primary" style="margin-left: 5px;">{{item.viewCount}} <mat-icon>remove_red_eye</mat-icon> </button>
+            <button mat-raised-button color="primary"  style="margin-left: 5px;" routerLink="/view-post/{{item.id}}">view Post </button>
+            
+            
+        </mat-card-actions>
+    
+    </mat-card>
+     </div>
+</div>
