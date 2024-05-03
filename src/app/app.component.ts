@@ -8,5 +8,6 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title="blog";
   @ViewChild('sidenav') sidenav!: MatSidenav;
 }
