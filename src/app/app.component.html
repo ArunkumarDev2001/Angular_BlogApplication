@@ -28,9 +28,9 @@
   <span class="fill-remaining-space"></span>
   <!-- Show these buttons only on larger screens (greater than small) -->
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-    <button mat-raised-button routerLink="create-post" >create-postr</button>
+    <button mat-raised-button routerLink="create-post" >create-post</button>
     <button mat-raised-button routerLink="" style="margin-left: 5px;" >view-All</button>
-    <button mat-raised-button routerLink="search-by-name" style="margin-left: 5px;" >search-by-name</button>
+    <button mat-raised-button routerLink="search-by-name" style="margin-left: 5px;" >search</button>
   </div>
   <!-- Show this menu button only on smaller screens (less than small) -->
   <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
@@ -42,8 +42,8 @@
 <mat-menu x-position="before" #menu="matMenu">
  
 
-  <button mat-menu-item  routerLink="create-post" >create-postr</button>
-    <button mat-menu-item  routerLink="view-all"  >view-All</button>
+  <button mat-menu-item  routerLink="create-post" >create-post</button>
+    <button mat-menu-item  routerLink=""  >view-All</button>
     <button mat-menu-item  routerLink="search-by-name" >search-by-name</button>
   <!-- Add more menu items if needed -->
 </mat-menu>
